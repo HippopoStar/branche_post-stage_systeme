@@ -21,11 +21,11 @@ getflag
 ## Level01
 
 ```
-docker run --rm -it debian:latest
-apt-get update && apt-get -y install john
-cat <<_EOF > /root/passwd.txt
-<paste content of /etc/passwd file>
-_EOF
+$> scp -P <port> level01@127.0.0.1:/etc/passwd /tmp/level01.txt
+$> docker run --rm --name level01 -it debian:latest
+#> apt-get update && apt-get -y install john
+$> docker cp /tmp/level01.txt level01:/root/
+#> john --show /root/level01.txt
 ```
 
 > `x24ti5gi3x0ol2eh4esiuxias`
@@ -38,6 +38,9 @@ scp -P <port> level02@127.0.0.1:~/level02.pcap /tmp
 chmod u+r /tmp/level02.pcap
 ```
 -> wireshark -> follow TCP stream  
+```
+man ascii
+```
 
 > `f2av5il02puano7naaf6adaaf`
 > `ft_waNDReL0L`
